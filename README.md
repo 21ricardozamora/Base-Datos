@@ -1,2 +1,2 @@
 # Base-Datos
-Asignatura BAE
+Repositorio dedicado a la asignatura Base de Datos
