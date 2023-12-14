@@ -1,3 +1,4 @@
+```sql
 Create table Ejemplo (
     id INTEGER PRIMARY KEY,
     texto TEXT,
@@ -6,7 +7,7 @@ Create table Ejemplo (
     fecha DATE,
     booleano BOOLEAN
 );
-```sql
+
 insert into Ejemplo (id,texto,entero,decimal,fecha,booleano)
 values (1, 'Ejemplo1', 	25, 	'10.5', 	'2022-05-15', 	'0'),
 (2, 'Ejemplo2', 63, '45.7', '2022-06-22', '1'),
