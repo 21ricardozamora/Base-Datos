@@ -97,3 +97,40 @@ Salimos de la base de datos.
 En nuestro IDE veremos el fichero que creamos con la extension ".sql" donde está toda la información de nuestra base de datos.
 Vamos a los Inserts donde cometí el error, y lo rellenamos con los datos correspondientes.
 Copiamos todos los Inserts y regresamos a nuestra base de datos, pegamos los Inserts nuevos modificados y ejecutamos, hemos rellenado todos los Inserts sin necesidad de ir uno por uno.
+
+sqlite> select * from Vehiculos where Marca = 'Ford' and Modelo = 'Fiesta';
+┌────┬───────┬────────┬──────┬─────────────────┐
+│ ID │ Marca │ Modelo │ Año  │ ID_Propietarios │
+├────┼───────┼────────┼──────┼─────────────────┤
+│ 1  │ Ford  │ Fiesta │ 2019 │ 1               │
+└────┴───────┴────────┴──────┴─────────────────┘
+sqlite> select * from Propietarios where DNI = '12345678A';
+┌────┬────────┬──────────┬───────────┐
+│ ID │ Nombre │ Apellido │    DNI    │
+├────┼────────┼──────────┼───────────┤
+│ 1  │ Juan   │ Perez    │ 12345678A │
+└────┴────────┴──────────┴───────────┘
+sqlite> select * from Vehiculos where ID_Propietarios = '5';
+┌────┬───────┬────────┬──────┬─────────────────┐
+│ ID │ Marca │ Modelo │ Año  │ ID_Propietarios │
+├────┼───────┼────────┼──────┼─────────────────┤
+│ 5  │ Honda │ Civic  │ 2016 │ 5               │
+└────┴───────┴────────┴──────┴─────────────────┘
+sqlite> 
+
+sqlite> select * from Propietarios where Apellido = 'Perez';
+┌────┬────────┬──────────┬───────────┐
+│ ID │ Nombre │ Apellido │    DNI    │
+├────┼────────┼──────────┼───────────┤
+│ 1  │ Juan   │ Perez    │ 12345678A │
+└────┴────────┴──────────┴───────────┘
+sqlite> select * from Vehiculos where Año = '2019';
+┌────┬────────────┬────────┬──────┬─────────────────┐
+│ ID │   Marca    │ Modelo │ Año  │ ID_Propietarios │
+├────┼────────────┼────────┼──────┼─────────────────┤
+│ 1  │ Ford       │ Fiesta │ 2019 │ 1               │
+│ 7  │ Toyota     │ RAV4   │ 2019 │ 7               │
+│ 11 │ Chevrolet  │ Malibu │ 2019 │ 11              │
+│ 16 │ Volkswagen │ Jetta  │ 2019 │ 16              │
+│ 20 │ Nissan     │ Murano │ 2019 │ 20              │
+└────┴────────────┴────────┴──────┴─────────────────┘
