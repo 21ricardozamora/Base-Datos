@@ -152,7 +152,7 @@ sqlite> select max(c.precio) as precio, c.modelo as modelo from coches as c;
 -- Mostrar los clientes que han comprado al menos un coche (un coche o más) y la cantidad de coches comprados.
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. COUNT
-
+    
 
 -- Encontrar los clientes que han comprado coches de la marca 'Toyota':
   -- Cosas que debo de tener en cuenta:
