@@ -93,28 +93,66 @@ sqlite> select c.modelo as modelo,c.precio as precio,cl.nombre as nombre from cl
   -- Cosas que debo de tener en cuenta:
     -- Precios superiores.
     -- Obtener la media. AVG(precio)
+  sqlite> select cl.nombre as nombre, c.precio as precio from clientes as cl,coches as c where c.precio >(select avg(c.precio) from coches as c) and id_cliente = id_coche;
++-----------------+---------+
+|     nombre      | precio  |
++-----------------+---------+
+| Carlos López    | 30000.0 |
+| Pedro Rodríguez | 32000.0 |
+| Isabel Díaz     | 35000.0 |
+| Francisco Ruiz  | 31000.0 |
+| Elena Torres    | 40000.0 |
++-----------------+---------+    
 
 -- Mostrar los modelos de coches y sus precios que no han sido vendidos aún:
 
   -- Cosas que debo de tener en cuenta:
     -- Coches que han sido vendidos.
     -- Quiero los coches que no han sido vendidos. NOT id_coche IN ventas
+sqlite> select c.modelo as modelo, c.precio as precio from coches as c where id_coche not in (select id_coche from ventas);
++-------------+---------+
+|   modelo    | precio  |
++-------------+---------+
+| Pickup 2022 | 31000.0 |
++-------------+---------+
 
 -- Calcular el total gastado por todos los clientes en coches:
   -- Cosas que debo de tener en cuenta:
     -- Me estan pidiendo la suma total de todos los coches vendidos, NO de aquellos que aún no se han vendido.
 
+
+
 -- Listar los coches vendidos junto con la fecha de venta y el nombre del cliente, ordenados por fecha de venta de forma descendente:
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. ¿Por qué campo tengo que ordenadar. Es uno o más campos?
-
+sqlite> select cl.nombre as nombre, c.modelo as modelo, v.fecha_venta as fecha from clientes as cl,coches as c, ventas as v where cl.id_cliente = v.id_venta and c.id_coche = id_venta order by v.fec
+ha_venta desc; 
++-----------------+----------------+------------+
+|     nombre      |     modelo     |   fecha    |
++-----------------+----------------+------------+
+| Francisco Ruiz  | Pickup 2022    | 2023-10-05 |
+| Isabel Díaz     | Deportivo 2023 | 2023-08-25 |
+| Miguel González | Híbrido 2022   | 2023-07-20 |
+| Laura Sánchez   | Compacto 2021  | 2023-06-15 |
+| Pedro Rodríguez | Camioneta 2023 | 2023-05-05 |
+| Ana Martínez    | Coupé 2022     | 2023-04-10 |
+| Carlos López    | SUV 2023       | 2023-03-25 |
+| María Gómez     | Hatchback 2021 | 2023-02-20 |
+| Juan Pérez      | Sedán 2022     | 2023-01-15 |
++-----------------+----------------+------------+
 -- Encontrar el modelo de coche más caro.
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. MAX
-
+sqlite> select max(c.precio) as precio, c.modelo as modelo from coches as c;
++---------+----------------+
+| precio  |     modelo     |
++---------+----------------+
+| 40000.0 | Eléctrico 2021 |
++---------+----------------+
 -- Mostrar los clientes que han comprado al menos un coche (un coche o más) y la cantidad de coches comprados.
   -- Cosas que debo de tener en cuenta:
     -- ¿Qué me están pidiendo?. COUNT
+
 
 -- Encontrar los clientes que han comprado coches de la marca 'Toyota':
   -- Cosas que debo de tener en cuenta:
