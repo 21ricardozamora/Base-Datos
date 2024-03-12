@@ -308,9 +308,60 @@ mysql> select cl.nombre as name, pro.precio as price from clientes as cl right j
 +------------+--------+
 --            Obtener el nombre de los productos que no se han ordenado aún
 --            Mostrar el nombre del cliente, el producto y la cantidad para todas las órdenes
+mysql> select cl.nombre as name, ord.cantidad as cantidad from clientes as cl right join productos as pro on cl.id_cliente = pro.id_producto left join ordenes as ord on cl.id_cliente = or
+d.id_cliente;
++------------+----------+
+| name       | cantidad |
++------------+----------+
+| Cliente 1  |        2 |
+| Cliente 2  |        1 |
+| Cliente 3  |        3 |
+| Cliente 4  |        2 |
+| Cliente 5  |        1 |
+| Cliente 6  |        2 |
+| Cliente 7  |        3 |
+| Cliente 8  |        2 |
+| Cliente 9  |        1 |
+| Cliente 10 |        2 |
+| Cliente 11 |        3 |
+| Cliente 12 |        2 |
+| Cliente 13 |        1 |
+| Cliente 14 |        2 |
+| Cliente 15 |        3 |
+| Cliente 16 |        2 |
+| Cliente 17 |        1 |
+| Cliente 18 |        2 |
+| Cliente 19 |        3 |
+| Cliente 20 |        2 |
 --            Obtener el nombre de los productos junto con los nombres de los clientes que han realizado órdenes de esos productos
 --            Mostrar todas las órdenes con sus clientes y productos, incluso si no hay órdenes
+mysql> select * from clientes as cl left join ordenes as ord on cl.id_cliente = ord.id_cliente right join productos as pro on ord.id_producto = pro.id_producto;
++------------+------------+---------------+----------+------------+-------------+----------+-------------+-------------+--------+
+| id_cliente | nombre     | direccion     | id_orden | id_cliente | id_producto | cantidad | id_producto | nombre      | precio |
++------------+------------+---------------+----------+------------+-------------+----------+-------------+-------------+--------+
+|          1 | Cliente 1  | Dirección 1   |        1 |          1 |           1 |        2 |           1 | Producto 1  |  10.99 |
+|          2 | Cliente 2  | Dirección 2   |        2 |          2 |           2 |        1 |           2 | Producto 2  |  20.50 |
+|          3 | Cliente 3  | Dirección 3   |        3 |          3 |           3 |        3 |           3 | Producto 3  |  30.99 |
+|          4 | Cliente 4  | Dirección 4   |        4 |          4 |           4 |        2 |           4 | Producto 4  |  40.50 |
+|          5 | Cliente 5  | Dirección 5   |        5 |          5 |           5 |        1 |           5 | Producto 5  |  50.99 |
+|          6 | Cliente 6  | Dirección 6   |        6 |          6 |           6 |        2 |           6 | Producto 6  |  60.50 |
+|          7 | Cliente 7  | Dirección 7   |        7 |          7 |           7 |        3 |           7 | Producto 7  |  70.99 |
+|          8 | Cliente 8  | Dirección 8   |        8 |          8 |           8 |        2 |           8 | Producto 8  |  80.50 |
+|          9 | Cliente 9  | Dirección 9   |        9 |          9 |           9 |        1 |           9 | Producto 9  |  90.99 |
+|         10 | Cliente 10 | Dirección 10  |       10 |         10 |          10 |        2 |          10 | Producto 10 | 100.50 |
+|         11 | Cliente 11 | Dirección 11  |       11 |         11 |          11 |        3 |          11 | Producto 11 | 110.99 |
+|         12 | Cliente 12 | Dirección 12  |       12 |         12 |          12 |        2 |          12 | Producto 12 | 120.50 |
+|         13 | Cliente 13 | Dirección 13  |       13 |         13 |          13 |        1 |          13 | Producto 13 | 130.99 |
+|         14 | Cliente 14 | Dirección 14  |       14 |         14 |          14 |        2 |          14 | Producto 14 | 140.50 |
+|         15 | Cliente 15 | Dirección 15  |       15 |         15 |          15 |        3 |          15 | Producto 15 | 150.99 |
+|         16 | Cliente 16 | Dirección 16  |       16 |         16 |          16 |        2 |          16 | Producto 16 | 160.50 |
+|         17 | Cliente 17 | Dirección 17  |       17 |         17 |          17 |        1 |          17 | Producto 17 | 170.99 |
+|         18 | Cliente 18 | Dirección 18  |       18 |         18 |          18 |        2 |          18 | Producto 18 | 180.50 |
+|         19 | Cliente 19 | Dirección 19  |       19 |         19 |          19 |        3 |          19 | Producto 19 | 190.99 |
+|         20 | Cliente 20 | Dirección 20  |       20 |         20 |          20 |        2 |          20 | Producto 20 | 200.50 |
++------------+------------+---------------+----------+------------+-------------+----------+-------------+-------------+--------+
 --            Obtener el nombre de los clientes junto con el número total de órdenes que han realizado
+
 --            Mostrar todas las órdenes junto con el nombre del cliente y el nombre del producto
 --            Mostrar todas las órdenes con sus productos y clientes, incluso si no hay información de cliente.
 --            Obtener el nombre de los productos junto con el nombre de los clientes que han realizado órdenes de esos productos, incluyendo los productos que no han sido ordenados
